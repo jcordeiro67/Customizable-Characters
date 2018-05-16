@@ -74,21 +74,21 @@ public class Customize : MonoBehaviour {
 		spawnPoint = Instantiate(playerStart, new Vector3 (0,0,0), Quaternion.identity) as GameObject;
 		InstantiateCharacterMesh(_characterMeshIndex, ca.characterMesh);
 
-		//pc = GameObject.FindObjectOfType<PlayerCharacter>();
+		// Old Instantiate Meshes
 
-		InstantiateChestArmorMesh();
-		InstantiateLeftShoulderArmorMesh();
-		InstantiateRightShoulderArmorMesh();
-		InstantiateHelmetMesh();
-		InstantiateLeftKneeMesh();
-		InstantiateRightKneeMesh();
-		InstantiateBeltArmorMesh();
-		InstantiateLeftHipArmorMesh();
-		InstantiateRightHipArmorMesh();
-		InstantiateLeftArmArmorMesh();
-		InstantiateRightArmArmorMesh();
-		InstantiateLeftHandWeaponMesh();
-		InstantiateRightHandWeaponMesh();
+//		InstantiateChestArmorMesh();
+//		InstantiateLeftShoulderArmorMesh();
+//		InstantiateRightShoulderArmorMesh();
+//		InstantiateHelmetMesh();
+//		InstantiateLeftKneeMesh();
+//		InstantiateRightKneeMesh();
+//		InstantiateBeltArmorMesh();
+//		InstantiateLeftHipArmorMesh();
+//		InstantiateRightHipArmorMesh();
+//		InstantiateLeftArmArmorMesh();
+//		InstantiateRightArmArmorMesh();
+//		InstantiateLeftHandWeaponMesh();
+//		InstantiateRightHandWeaponMesh();
 	}
 
 	void Update(){
@@ -129,400 +129,402 @@ public class Customize : MonoBehaviour {
 	/// 	INSTANTIATE MESHES						///
 	//////////////////////////////////////////////////
 
-	#region Instantiate Meshes
-	void InstantiateLeftShoulderArmorMesh(){
-
-		if (_lShoulderArmorIndex > ca.lShoulderArmorMesh.Length - 1) {
-			_lShoulderArmorIndex = 0;
-		}
-
-		if (pc.LF_ShoulderGuardNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.LF_ShoulderGuardNode.transform.childCount; i++) {
-				Destroy(pc.LF_ShoulderGuardNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		shoulderArmorMesh = Instantiate(ca.lShoulderArmorMesh[_lShoulderArmorIndex], pc.LF_ShoulderGuardNode.transform.position, 
-			Quaternion.identity) as GameObject;
-		shoulderArmorMesh.transform.parent = pc.LF_ShoulderGuardNode.transform;
-		shoulderArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-		shoulderArmorMesh.transform.localScale = pc.LF_ShoulderGuardNode.transform.localScale;
-
-		switch (_lShoulderArmorIndex) {
-
-			case 1:
-				_lShoulderArmorIndex = 1;
-
-				break;
-
-			default:
-				_lShoulderArmorIndex = 0;
-				break;
-		}
-	}
-
-	void InstantiateRightShoulderArmorMesh(){
-
-		if (_rShoulderArmorIndex > ca.rShoulderArmorMesh.Length - 1) {
-			_rShoulderArmorIndex = 0;
-		}
-
-		if (pc.RT_ShoulderGuardNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.RT_ShoulderGuardNode.transform.childCount; i++) {
-				Destroy(pc.RT_ShoulderGuardNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		shoulderArmorMesh = Instantiate(ca.rShoulderArmorMesh[_rShoulderArmorIndex], pc.RT_ShoulderGuardNode.transform.position, 
-			Quaternion.identity) as GameObject;
-		shoulderArmorMesh.transform.parent = pc.RT_ShoulderGuardNode.transform;
-		shoulderArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-
-		switch (_rShoulderArmorIndex) {
-
-			case 1:
-				_rShoulderArmorIndex = 1;
-				break;
-
-			default:
-				_rShoulderArmorIndex = 0;
-				break;
-		}
-
-
-	}
-
-	void InstantiateLeftHandWeaponMesh(){
-
-		if (_lHandWeaponIndex > ca.lHandWeaponMesh.Length - 1) {
-			_lHandWeaponIndex = 0;
-		}
-
-		if (pc.LF_HandWeaponNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.LF_HandWeaponNode.transform.childCount; i++) {
-				Destroy(pc.LF_HandWeaponNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		lHandWeaponMesh = Instantiate(ca.lHandWeaponMesh[_lHandWeaponIndex], pc.LF_HandWeaponNode.transform.position, 
-			Quaternion.identity) as GameObject;
-		lHandWeaponMesh.transform.parent = pc.LF_HandWeaponNode.transform;
-		lHandWeaponMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-		lHandWeaponMesh.transform.localScale = pc.LF_HandWeaponNode.transform.localScale;
-
-		switch (_lHandWeaponIndex) {
-
-			case 1:
-				_lHandWeaponIndex = 1;
-				break;
-
-			default:
-				_lHandWeaponIndex = 0;
-				break;
-		}
-	}
-
-	void InstantiateRightHandWeaponMesh(){
-
-		if (_rHandWeaponIndex > ca.rHandWeaponMesh.Length - 1) {
-			_rHandWeaponIndex = 0;
-		}
-
-		if (pc.RT_HandWeaponNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.RT_HandWeaponNode.transform.childCount; i++) {
-				Destroy(pc.RT_HandWeaponNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		rHandWeaponMesh = Instantiate(ca.rHandWeaponMesh[_rHandWeaponIndex], pc.RT_HandWeaponNode.transform.position, 
-			Quaternion.identity) as GameObject;
-		rHandWeaponMesh.transform.parent = pc.RT_HandWeaponNode.transform;
-		rHandWeaponMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-		rHandWeaponMesh.transform.localScale = pc.RT_HandWeaponNode.transform.localScale;
-
-		switch (_rHandWeaponIndex) {
-
-			case 1:
-				_rHandWeaponIndex = 1;
-				break;
-
-			default:
-				_rHandWeaponIndex = 0;
-				break;
-		}
-	}
-
-	void InstantiateLeftArmArmorMesh(){
-
-		if (_lArmArmorIndex > ca.lArmArmorMesh.Length - 1) {
-			_lArmArmorIndex = 0;
-		}
-
-		if (pc.LF_ArmNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.LF_ArmNode.transform.childCount; i++) {
-				Destroy(pc.LF_ArmNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		lArmArmorMesh = Instantiate(ca.lArmArmorMesh[_lArmArmorIndex], pc.LF_ArmNode.transform.position, 
-			Quaternion.identity) as GameObject;
-		lArmArmorMesh.transform.parent = pc.LF_ArmNode.transform;
-		lArmArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-		Vector3 nodeScale = new Vector3(pc.LF_ArmNode.transform.localScale.x, pc.LF_ArmNode.transform.localScale.y, pc.LF_ArmNode.transform.localScale.z);
-		nodeScale.x = nodeScale.x * -1;
-		lArmArmorMesh.transform.localScale = nodeScale;
-
-		switch (_lArmArmorIndex) {
-
-			case 1:
-				_lArmArmorIndex = 1;
-				break;
-
-			default:
-				_lArmArmorIndex = 0;
-				break;
-		}
-	}
-
-	void InstantiateRightArmArmorMesh(){
-
-		if (_rArmArmorIndex > ca.rArmArmorMesh.Length - 1) {
-			_rArmArmorIndex = 0;
-		}
-
-		if (pc.RT_ArmNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.RT_ArmNode.transform.childCount; i++) {
-				Destroy(pc.RT_ArmNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		rArmArmorMesh = Instantiate(ca.rArmArmorMesh[_rArmArmorIndex], pc.RT_ArmNode.transform.position, 
-			Quaternion.identity) as GameObject;
-		rArmArmorMesh.transform.parent = pc.RT_ArmNode.transform;
-		rArmArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-		rArmArmorMesh.transform.localScale = pc.RT_ArmNode.transform.localScale;
-
-		switch (_rArmArmorIndex) {
-
-			case 1:
-				_rArmArmorIndex = 1;
-				break;
-
-			default:
-				_rArmArmorIndex = 0;
-				break;
-		}
-	}
-
-	void InstantiateChestArmorMesh(){
-		
-		if (_chestArmorIndex > ca.chestArmorMesh.Length - 1) {
-			_chestArmorIndex = 0;
-		}
-
-
-		if (pc.chestNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.chestNode.transform.childCount; i++) {
-				Destroy(pc.chestNode.transform.GetChild(i).gameObject);
-			}
-		}
-		
-		chestArmorMesh = Instantiate(ca.chestArmorMesh[_chestArmorIndex], pc.chestNode.transform.position, Quaternion.identity) as GameObject;
-		chestArmorMesh.transform.parent = pc.chestNode.transform;
-		chestArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-
-		switch (_chestArmorIndex) {
-
-			case 1:
-				_chestArmorIndex = 1;
-				break;
-
-			default:
-				_chestArmorIndex = 0;
-				break;
-		}
-
-
-	}
-
-	void InstantiateHelmetMesh(){
-
-		if (_helmetArmorIndex > ca.helmetMesh.Length - 1) {
-			_helmetArmorIndex = 0;
-		}
-
-		if (pc.helmetNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.helmetNode.transform.childCount; i++) {
-				Destroy(pc.helmetNode.transform.GetChild(i).gameObject);
-			}
-		}
-		
-		helmetMesh = Instantiate(ca.helmetMesh[_helmetArmorIndex], pc.helmetNode.transform.position, Quaternion.identity) as GameObject;
-		helmetMesh.transform.parent = pc.helmetNode.transform;
-		helmetMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-
-		switch (_helmetArmorIndex) {
-
-			case 1:
-				_helmetArmorIndex = 1;
-				break;
-
-			default:
-				_helmetArmorIndex = 0;
-				break;
-		}
-
-
-	}
-
-	void InstantiateLeftKneeMesh(){
-
-		if (_lKneeArmorIndex > ca.lKneeArmorMesh.Length - 1) {
-			_lKneeArmorIndex = 0;
-		}
-
-		if (pc.LF_KneeNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.LF_KneeNode.transform.childCount; i++) {
-				Destroy(pc.LF_KneeNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		lKneeMesh = Instantiate(ca.lKneeArmorMesh[_lKneeArmorIndex], pc.LF_KneeNode.transform.position, Quaternion.identity) as GameObject;
-		lKneeMesh.transform.parent = pc.LF_KneeNode.transform;
-		lKneeMesh.transform.rotation = pc.LF_KneeNode.transform.rotation;
-
-		switch (_lKneeArmorIndex) {
-
-			case 1:
-				_lKneeArmorIndex = 1;
-				break;
-
-			default:
-				_lKneeArmorIndex = 0;
-				break;
-		}
-
-
-	}
-
-	void InstantiateRightKneeMesh(){
-
-		if (_rKneeArmorIndex > ca.rKneeArmorMesh.Length - 1) {
-			_rKneeArmorIndex = 0;
-		}
-
-		if (pc.RT_KneeNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.RT_KneeNode.transform.childCount; i++) {
-				Destroy(pc.RT_KneeNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		rKneeMesh = Instantiate(ca.rKneeArmorMesh[_rKneeArmorIndex], pc.RT_KneeNode.transform.position, Quaternion.identity) as GameObject;
-		rKneeMesh.transform.parent = pc.RT_KneeNode.transform;
-		rKneeMesh.transform.rotation = pc.RT_KneeNode.transform.rotation;
-
-		switch (_rKneeArmorIndex) {
-
-			case 1:
-				_rKneeArmorIndex = 1;
-				break;
-
-			default:
-				_rKneeArmorIndex = 0;
-				break;
-		}
-
-
-	}
-
-	void InstantiateBeltArmorMesh(){
-
-		if (_beltArmorIndex > ca.beltArmorMesh.Length - 1) {
-			_beltArmorIndex = 0;
-		}
-
-		if (pc.beltNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.beltNode.transform.childCount; i++) {
-				Destroy(pc.beltNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		beltArmorMesh = Instantiate(ca.beltArmorMesh[_beltArmorIndex], pc.beltNode.transform.position, Quaternion.identity) as GameObject;
-		beltArmorMesh.transform.parent = pc.beltNode.transform;
-		beltArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
-
-		switch (_beltArmorIndex) {
-
-			case 1:
-				_beltArmorIndex = 1;
-				break;
-
-			default:
-				_beltArmorIndex = 0;
-				break;
-		}
-
-
-
-	}
-
-	void InstantiateLeftHipArmorMesh(){
-
-		if (_lHipArmorIndex > ca.lHipArmorMesh.Length - 1) {
-			_lHipArmorIndex = 0;
-		}
-
-		if (pc.LF_HipNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.LF_HipNode.transform.childCount; i++) {
-				Destroy(pc.LF_HipNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		lHipArmorMesh = Instantiate(ca.lHipArmorMesh[_lHipArmorIndex], pc.LF_HipNode.transform.position, Quaternion.identity) as GameObject;
-		lHipArmorMesh.transform.parent = pc.LF_HipNode.transform;
-		lHipArmorMesh.transform.rotation = pc.LF_HipNode.transform.rotation;
-
-		switch (_lHipArmorIndex) {
-
-			case 1:
-				_lHipArmorIndex = 1;
-				break;
-
-			default:
-				_lHipArmorIndex = 0;
-				break;
-		}
-	}
-
-	void InstantiateRightHipArmorMesh(){
-
-		if (_rHipArmorIndex > ca.rHipArmorMesh.Length - 1) {
-			_rHipArmorIndex = 0;
-		}
-
-		if (pc.LF_HipNode.transform.childCount > 0) {
-			for (int i = 0; i < pc.RT_HipNode.transform.childCount; i++) {
-				Destroy(pc.RT_HipNode.transform.GetChild(i).gameObject);
-			}
-		}
-
-		rHipArmorMesh = Instantiate(ca.rHipArmorMesh[_rHipArmorIndex], pc.RT_HipNode.transform.position, Quaternion.identity) as GameObject;
-		rHipArmorMesh.transform.parent = pc.RT_HipNode.transform;
-		rHipArmorMesh.transform.rotation = pc.RT_HipNode.transform.rotation;
-
-
-
-		switch (_rHipArmorIndex) {
-
-			case 1:
-				_rHipArmorIndex = 1;
-				break;
-
-			default:
-				_rHipArmorIndex = 0;
-				break;
-		}
-	}
+	#region OLD Instantiate Meshes
+//	void InstantiateLeftShoulderArmorMesh(){
+//
+//		if (_lShoulderArmorIndex > ca.lShoulderArmorMesh.Length - 1) {
+//			_lShoulderArmorIndex = 0;
+//		}
+//
+//		if (pc.LF_ShoulderGuardNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.LF_ShoulderGuardNode.transform.childCount; i++) {
+//				Destroy(pc.LF_ShoulderGuardNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		shoulderArmorMesh = Instantiate(ca.lShoulderArmorMesh[_lShoulderArmorIndex], pc.LF_ShoulderGuardNode.transform.position, 
+//			Quaternion.identity) as GameObject;
+//		shoulderArmorMesh.transform.parent = pc.LF_ShoulderGuardNode.transform;
+//		shoulderArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//		shoulderArmorMesh.transform.localScale = pc.LF_ShoulderGuardNode.transform.localScale;
+//
+//		switch (_lShoulderArmorIndex) {
+//
+//			case 1:
+//				_lShoulderArmorIndex = 1;
+//
+//				break;
+//
+//			default:
+//				_lShoulderArmorIndex = 0;
+//				break;
+//		}
+//	}
+//
+//	void InstantiateRightShoulderArmorMesh(){
+//
+//		if (_rShoulderArmorIndex > ca.rShoulderArmorMesh.Length - 1) {
+//			_rShoulderArmorIndex = 0;
+//		}
+//
+//		if (pc.RT_ShoulderGuardNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.RT_ShoulderGuardNode.transform.childCount; i++) {
+//				Destroy(pc.RT_ShoulderGuardNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		shoulderArmorMesh = Instantiate(ca.rShoulderArmorMesh[_rShoulderArmorIndex], pc.RT_ShoulderGuardNode.transform.position, 
+//			Quaternion.identity) as GameObject;
+//		shoulderArmorMesh.transform.parent = pc.RT_ShoulderGuardNode.transform;
+//		shoulderArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//
+//		switch (_rShoulderArmorIndex) {
+//
+//			case 1:
+//				_rShoulderArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_rShoulderArmorIndex = 0;
+//				break;
+//		}
+//
+//
+//	}
+//
+//	void InstantiateLeftHandWeaponMesh(){
+//
+//		if (_lHandWeaponIndex > ca.lHandWeaponMesh.Length - 1) {
+//			_lHandWeaponIndex = 0;
+//		}
+//
+//		if (pc.LF_HandWeaponNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.LF_HandWeaponNode.transform.childCount; i++) {
+//				Destroy(pc.LF_HandWeaponNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		lHandWeaponMesh = Instantiate(ca.lHandWeaponMesh[_lHandWeaponIndex], pc.LF_HandWeaponNode.transform.position, 
+//			Quaternion.identity) as GameObject;
+//		lHandWeaponMesh.transform.parent = pc.LF_HandWeaponNode.transform;
+//		lHandWeaponMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//		lHandWeaponMesh.transform.localScale = pc.LF_HandWeaponNode.transform.localScale;
+//
+//		switch (_lHandWeaponIndex) {
+//
+//			case 1:
+//				_lHandWeaponIndex = 1;
+//				break;
+//
+//			default:
+//				_lHandWeaponIndex = 0;
+//				break;
+//		}
+//	}
+//
+//	void InstantiateRightHandWeaponMesh(){
+//
+//		if (_rHandWeaponIndex > ca.rHandWeaponMesh.Length - 1) {
+//			_rHandWeaponIndex = 0;
+//		}
+//
+//		if (pc.RT_HandWeaponNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.RT_HandWeaponNode.transform.childCount; i++) {
+//				Destroy(pc.RT_HandWeaponNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		rHandWeaponMesh = Instantiate(ca.rHandWeaponMesh[_rHandWeaponIndex], pc.RT_HandWeaponNode.transform.position, 
+//			Quaternion.identity) as GameObject;
+//		rHandWeaponMesh.transform.parent = pc.RT_HandWeaponNode.transform;
+//		rHandWeaponMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//		rHandWeaponMesh.transform.localScale = pc.RT_HandWeaponNode.transform.localScale;
+//
+//		switch (_rHandWeaponIndex) {
+//
+//			case 1:
+//				_rHandWeaponIndex = 1;
+//				break;
+//
+//			default:
+//				_rHandWeaponIndex = 0;
+//				break;
+//		}
+//	}
+//
+//	void InstantiateLeftArmArmorMesh(){
+//
+//		if (_lArmArmorIndex > ca.lArmArmorMesh.Length - 1) {
+//			_lArmArmorIndex = 0;
+//		}
+//
+//		if (pc.LF_ArmNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.LF_ArmNode.transform.childCount; i++) {
+//				Destroy(pc.LF_ArmNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		lArmArmorMesh = Instantiate(ca.lArmArmorMesh[_lArmArmorIndex], pc.LF_ArmNode.transform.position, 
+//			Quaternion.identity) as GameObject;
+//		lArmArmorMesh.transform.parent = pc.LF_ArmNode.transform;
+//		lArmArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//		Vector3 nodeScale = new Vector3(pc.LF_ArmNode.transform.localScale.x, pc.LF_ArmNode.transform.localScale.y, pc.LF_ArmNode.transform.localScale.z);
+//		nodeScale.x = nodeScale.x * -1;
+//		lArmArmorMesh.transform.localScale = nodeScale;
+//
+//		switch (_lArmArmorIndex) {
+//
+//			case 1:
+//				_lArmArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_lArmArmorIndex = 0;
+//				break;
+//		}
+//	}
+//
+//	void InstantiateRightArmArmorMesh(){
+//
+//		if (_rArmArmorIndex > ca.rArmArmorMesh.Length - 1) {
+//			_rArmArmorIndex = 0;
+//		}
+//
+//		if (pc.RT_ArmNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.RT_ArmNode.transform.childCount; i++) {
+//				Destroy(pc.RT_ArmNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		rArmArmorMesh = Instantiate(ca.rArmArmorMesh[_rArmArmorIndex], pc.RT_ArmNode.transform.position, 
+//			Quaternion.identity) as GameObject;
+//		rArmArmorMesh.transform.parent = pc.RT_ArmNode.transform;
+//		rArmArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//		rArmArmorMesh.transform.localScale = pc.RT_ArmNode.transform.localScale;
+//
+//		switch (_rArmArmorIndex) {
+//
+//			case 1:
+//				_rArmArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_rArmArmorIndex = 0;
+//				break;
+//		}
+//	}
+//
+//	void InstantiateChestArmorMesh(){
+//		
+//		if (_chestArmorIndex > ca.chestArmorMesh.Length - 1) {
+//			_chestArmorIndex = 0;
+//		}
+//
+//
+//		if (pc.chestNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.chestNode.transform.childCount; i++) {
+//				Destroy(pc.chestNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//		
+//		chestArmorMesh = Instantiate(ca.chestArmorMesh[_chestArmorIndex], pc.chestNode.transform.position, Quaternion.identity) as GameObject;
+//		chestArmorMesh.transform.parent = pc.chestNode.transform;
+//		chestArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//
+//		switch (_chestArmorIndex) {
+//
+//			case 1:
+//				_chestArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_chestArmorIndex = 0;
+//				break;
+//		}
+//
+//
+//	}
+//
+//	void InstantiateHelmetMesh(){
+//
+//		if (_helmetArmorIndex > ca.helmetMesh.Length - 1) {
+//			_helmetArmorIndex = 0;
+//		}
+//
+//		if (pc.helmetNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.helmetNode.transform.childCount; i++) {
+//				Destroy(pc.helmetNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//		
+//		helmetMesh = Instantiate(ca.helmetMesh[_helmetArmorIndex], pc.helmetNode.transform.position, Quaternion.identity) as GameObject;
+//		helmetMesh.transform.parent = pc.helmetNode.transform;
+//		helmetMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//
+//		switch (_helmetArmorIndex) {
+//
+//			case 1:
+//				_helmetArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_helmetArmorIndex = 0;
+//				break;
+//		}
+//
+//
+//	}
+//
+//	void InstantiateLeftKneeMesh(){
+//
+//		if (_lKneeArmorIndex > ca.lKneeArmorMesh.Length - 1) {
+//			_lKneeArmorIndex = 0;
+//		}
+//
+//		if (pc.LF_KneeNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.LF_KneeNode.transform.childCount; i++) {
+//				Destroy(pc.LF_KneeNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		lKneeMesh = Instantiate(ca.lKneeArmorMesh[_lKneeArmorIndex], pc.LF_KneeNode.transform.position, Quaternion.identity) as GameObject;
+//		lKneeMesh.transform.parent = pc.LF_KneeNode.transform;
+//		lKneeMesh.transform.rotation = pc.LF_KneeNode.transform.rotation;
+//
+//		switch (_lKneeArmorIndex) {
+//
+//			case 1:
+//				_lKneeArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_lKneeArmorIndex = 0;
+//				break;
+//		}
+//
+//
+//	}
+//
+//	void InstantiateRightKneeMesh(){
+//
+//		if (_rKneeArmorIndex > ca.rKneeArmorMesh.Length - 1) {
+//			_rKneeArmorIndex = 0;
+//		}
+//
+//		if (pc.RT_KneeNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.RT_KneeNode.transform.childCount; i++) {
+//				Destroy(pc.RT_KneeNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		rKneeMesh = Instantiate(ca.rKneeArmorMesh[_rKneeArmorIndex], pc.RT_KneeNode.transform.position, Quaternion.identity) as GameObject;
+//		rKneeMesh.transform.parent = pc.RT_KneeNode.transform;
+//		rKneeMesh.transform.rotation = pc.RT_KneeNode.transform.rotation;
+//
+//		switch (_rKneeArmorIndex) {
+//
+//			case 1:
+//				_rKneeArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_rKneeArmorIndex = 0;
+//				break;
+//		}
+//
+//
+//	}
+//
+//	void InstantiateBeltArmorMesh(){
+//
+//		if (_beltArmorIndex > ca.beltArmorMesh.Length - 1) {
+//			_beltArmorIndex = 0;
+//		}
+//
+//		if (pc.beltNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.beltNode.transform.childCount; i++) {
+//				Destroy(pc.beltNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		beltArmorMesh = Instantiate(ca.beltArmorMesh[_beltArmorIndex], pc.beltNode.transform.position, Quaternion.identity) as GameObject;
+//		beltArmorMesh.transform.parent = pc.beltNode.transform;
+//		beltArmorMesh.transform.rotation = new Quaternion(0, 0, 0, 0);
+//
+//		switch (_beltArmorIndex) {
+//
+//			case 1:
+//				_beltArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_beltArmorIndex = 0;
+//				break;
+//		}
+//
+//
+//
+//	}
+//
+//	void InstantiateLeftHipArmorMesh(){
+//
+//		if (_lHipArmorIndex > ca.lHipArmorMesh.Length - 1) {
+//			_lHipArmorIndex = 0;
+//		}
+//
+//		if (pc.LF_HipNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.LF_HipNode.transform.childCount; i++) {
+//				Destroy(pc.LF_HipNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		lHipArmorMesh = Instantiate(ca.lHipArmorMesh[_lHipArmorIndex], pc.LF_HipNode.transform.position, Quaternion.identity) as GameObject;
+//		lHipArmorMesh.transform.parent = pc.LF_HipNode.transform;
+//		lHipArmorMesh.transform.rotation = pc.LF_HipNode.transform.rotation;
+//
+//		switch (_lHipArmorIndex) {
+//
+//			case 1:
+//				_lHipArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_lHipArmorIndex = 0;
+//				break;
+//		}
+//	}
+//
+//	void InstantiateRightHipArmorMesh(){
+//
+//		if (_rHipArmorIndex > ca.rHipArmorMesh.Length - 1) {
+//			_rHipArmorIndex = 0;
+//		}
+//
+//		if (pc.LF_HipNode.transform.childCount > 0) {
+//			for (int i = 0; i < pc.RT_HipNode.transform.childCount; i++) {
+//				Destroy(pc.RT_HipNode.transform.GetChild(i).gameObject);
+//			}
+//		}
+//
+//		rHipArmorMesh = Instantiate(ca.rHipArmorMesh[_rHipArmorIndex], pc.RT_HipNode.transform.position, Quaternion.identity) as GameObject;
+//		rHipArmorMesh.transform.parent = pc.RT_HipNode.transform;
+//		rHipArmorMesh.transform.rotation = pc.RT_HipNode.transform.rotation;
+//
+//
+//
+//		switch (_rHipArmorIndex) {
+//
+//			case 1:
+//				_rHipArmorIndex = 1;
+//				break;
+//
+//			default:
+//				_rHipArmorIndex = 0;
+//				break;
+//		}
+//	}
+
+	#endregion
 
 	void InstantiateArmorMesh(int _meshIndex, GameObject[] _armorMesh, GameObject _parentNode){
 		
@@ -563,11 +565,11 @@ public class Customize : MonoBehaviour {
 		}
 		isUpdated = true;
 	}
-	#endregion
+
 
 
 	#region Change Meshes
-
+	// Change Meshes GUI Buttons
 
 	void ChangeHelmetArmorMesh(){
 		if (GUI.Button(new Rect(77, 0, 120, 30), "Helmet")) {
@@ -744,6 +746,8 @@ public class Customize : MonoBehaviour {
 				break;
 		}
 	}
+
+	// Change Materials
 
 	void ChangeMeshMaterial(CharacterMeshMaterial cmm){
 		
