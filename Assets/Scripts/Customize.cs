@@ -16,7 +16,8 @@ public class Customize : MonoBehaviour {
 		Head
 	}
 
-	public GameObject spawnPoint;
+	public GameObject playerStart;
+
 	// Character Mesh Variables
 	private int _characterMeshIndex = 0;
 	private string _charMeshName = "Warrior";
@@ -63,11 +64,14 @@ public class Customize : MonoBehaviour {
 	private GameObject rHandWeaponMesh;
 
 	private GameObject armorMesh;
+	private GameObject spawnPoint;
 
 	#endregion
 	// Use this for initialization
 	void Start () {
+		
 		ca = GetComponent<CharacterAssets>();
+		spawnPoint = Instantiate(playerStart, new Vector3 (0,0,0), Quaternion.identity) as GameObject;
 		InstantiateCharacterMesh(_characterMeshIndex, ca.characterMesh);
 
 		//pc = GameObject.FindObjectOfType<PlayerCharacter>();

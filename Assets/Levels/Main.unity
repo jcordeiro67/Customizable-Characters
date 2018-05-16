@@ -113,36 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &189700969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1701557310303744, guid: c6486f6b66dbc4f13a378168bad8233e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 189700970}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &189700970
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4023536859707380, guid: c6486f6b66dbc4f13a378168bad8233e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 189700969}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &724197316
 Prefab:
   m_ObjectHideFlags: 0
@@ -250,13 +220,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4488647559417966, guid: ea535f95370a14870b0d2c137e13d40a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114210959986904336, guid: ea535f95370a14870b0d2c137e13d40a,
-        type: 2}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 189700969}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea535f95370a14870b0d2c137e13d40a, type: 2}
   m_IsPrefabParent: 0
